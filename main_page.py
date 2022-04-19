@@ -1,28 +1,17 @@
 from command import *
 from user_page import *
 
-# return an object
-def datas(a):
-    return a
+def enter_user():
+    book = openpyxl.open('Data.xlsx', read_only=True)
+    sheet = book.active
 
-# converting to list, going thrue all ojects as [list] and checking if it equals to our input, then redirect to user interface
-def entry():
-    win_name = list(map(datas, open('registration_name.csv')))
-    for line in win_name:
-        if entry_name.get() in line:
-            j = 1
-        else:
-            print('again')
-    win_password = list(map(datas, open('registration_password.csv')))
-    for lines in win_password:
-        if entry_passwork.get() in lines:
-            k = 1
-        else:
-            print('again123')
-    if j & k == 1:
-        user_interface()
-
- 
+    for row in range(1,sheet.max_column):
+        if entry_name.get() == sheet[row][1].value and entry_passwork.get() == sheet[row][2].value:
+            user_interface()
+            print('work')
+        elif entry_name.get() not in sheet[row][1].value or entry_passwork.get() not in sheet[row][2].value:
+            print("error")
+    
 pro = tk.Tk()
 pro.geometry('300x400')
 pro.title('Project to porfolio')
@@ -38,10 +27,11 @@ entry_passwork = tk.Entry()
 entry_passwork.grid(row=1, column=1)
 
 # add (login_enter command)
-enter = tk.Button(pro, text='Enter', command=entry).grid()
+enter = tk.Button(pro, text='Enter', command=enter_user).grid()
 register = tk.Button(pro, text='Registration', command=new_user).grid()
 
 
 pro.mainloop()
 
-# add in additional file: registration data
+# # add in additional file: registration data
+
