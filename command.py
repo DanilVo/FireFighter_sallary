@@ -1,5 +1,6 @@
 from time import strftime
 import tkinter as tk
+from openpyxl import *
 import openpyxl
 
 def new_user_data_sheet():
@@ -26,8 +27,8 @@ def registration_data():
     sheet['E1'] = 'Last Name'
     sheet['F1'] = 'Registration Date'
 
-    row_number = sheet.max_row
     #(sheet.insert_rows() - inserting new row, by default to the top)(row +1 - in serting to place i want) 
+    row_number = sheet.max_row
     sheet.insert_rows(row_number + 1)
     sheet[row_number+1][0].value = sheet.max_row  # ID the user will get
     sheet[row_number+1][1].value = name_entry.get()
