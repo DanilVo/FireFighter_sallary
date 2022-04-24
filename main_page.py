@@ -5,8 +5,6 @@ def enter_user():
     book = openpyxl.open('Data.xlsx', read_only=True)
     sheet = book.active
 
-    
-
     for row in range(1,sheet.max_row):
         if entry_name.get() == sheet[row][1].value and entry_passwork.get() == sheet[row][2].value:
             user_interface(sheet[row][0].value)

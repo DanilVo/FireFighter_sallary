@@ -5,8 +5,7 @@ import openpyxl
 
 def new_user_data_sheet():
     user_info = openpyxl.load_workbook("User information.xlsx")
-    ws = user_info.create_sheet()
-    ws.title = f'User {row_number}'
+    ws = user_info.create_sheet(f'User {row_number}')
     ws['A1'] = 'Start Shift'
     ws['B1'] = 'End Shift'
     ws['C1'] = 'Total Shift Time'
