@@ -1,4 +1,3 @@
-from cProfile import label
 from calendar import c
 from logging import root
 from command import *
@@ -44,21 +43,23 @@ class Main_user:
         self.root.title(title)
         self.root.geometry(f'{width}x{height}+300+300')
         self.text = ''
-        
-        self.label = Label(self.root, text='hello')
+        # self.row = 2
+        # self.column = 1
 
     def add_text(self,text):
         self.text = text
 
     def make_label(self):
-        self.label.pack()
+        Label(self.root,text=self.text).grid(row=1, column=2)
         
+        
+        
+
     def run_mainloop(self):
-        self.make_label()
         self.root.mainloop()
         print('good')
 
 window = Main_user(300,400)
-# window.add_text(text='hello')
-# window.make_label()
+window.add_text(text='hello')
+window.make_label()
 window.run_mainloop()        
